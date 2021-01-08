@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Create New Role</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+	<div class="container my-3">
+		<div class="row">
+			<div class="col-md-8 mx-auto">
+				<h2>Role Registration</h2>
+				<form th:action="@{/console/save_role}" th:object="${role}"
+					method="post">
+					<div class="form-row">
+						<div class="col-md-6 form-group">
+							<label>Description</label> <input type="text"
+								class="form-control" th:field="*{description}">
+						</div>
+						<div class="col-md-6 form-group"></div>
+						<div class="col-md-6 form-group">
+							<div class="wrapper">
+								<label>Authorities: </label>
+								<ul th:each="auth : ${authorities}">
+									<li><input type="checkbox" name="authorities"
+										th:text="${auth.authority}" th:value="${auth.authorityId}" /></li>
+								</ul>
+
+								<!-- 							<label>Authorities</label> <select class="form-control" -->
+								<!-- 								th:field="${authorities}"> -->
+								<!-- 								<option value="0">Select Authority</option> -->
+								<!-- 								<option th:each="auth : ${authorities}" -->
+								<!-- 									th:value="${auth.authorityId}" th:text="${auth.authority}"></option> -->
+								<!-- 							</select> -->
+							</div>
+						</div>
+
+						<input type="hidden" id="id" th:field="*{roleId}">
+
+					</div>
+					<button type="submit" class="btn btn-primary btn-block mt-3">Save</button>
+				</form>
+
+				<form th:action="@{/console}">
+					<input type="submit" value="Return to console"
+						class="btn btn-primary btn-block mt-3" />
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<link rel="stylesheet" href="style.css">
+<title>Login</title>
+<style type="text/css">
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+</style>
+</head>
+
+<body>
+	<div th:if="${param.error}">Invalid username and password.</div>
+	<div th:if="${param.logout}">You have been logged out.</div>
+	<form th:action="@{/login}" method="post">
+		<div>
+			<label> User Name : <input type="text" name="username" />
+			</label>
+		</div>
+		<div>
+			<label> Password: <input type="password" name="password" />
+			</label>
+		</div>
+		<div>
+			<input type="submit" value="Sign In" />
+		</div>
+	</form>
+
+
+	<!-- 	<div class="login"> -->
+
+	<!-- 		<h1>Login</h1> -->
+	<!-- 		<div th:if="${param.error}">Invalid username and password.</div> -->
+	<!-- 		<div th:if="${param.logout}">You have been logged out.</div> -->
+	<!-- 		<form th:action="@{/login}" method="post"> -->
+	<!-- 			<input type="text" name="u" placeholder="Username" -->
+	<!-- 				required="required" /> <input type="password" name="p" -->
+	<!-- 				placeholder="Password" required="required" /> -->
+	<!-- 			<button type="submit" class="btn btn-primary btn-block btn-large">Let -->
+	<!-- 				me in.</button> -->
+	<!-- 		</form> -->
+	<!-- 	</div> -->
+</body>
+</html>

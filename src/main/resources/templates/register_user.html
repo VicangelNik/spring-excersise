@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Create New Employee</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+</head>
+<body>
+	<div class="container my-3">
+		<div class="row">
+			<div class="col-md-8 mx-auto">
+				<h2>Employee Registration</h2>
+				<form th:action="@{/console/save_user}" th:object="${user}"
+					method="post">
+					<div class="form-row">
+						<div class="col-md-6 form-group">
+							<label>Name</label> <input type="text" class="form-control"
+								th:field="*{name}">
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Surname</label> <input type="text" class="form-control"
+								th:field="*{surname}">
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Department</label> <select class="form-control"
+								th:field="*{dept}">
+								<option value="">Choose...</option>
+								<option value="IT">IT</option>
+								<option value="HR">HR</option>
+								<option value="Sale">Sale</option>
+							</select>
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Age</label> <input type="number" step="any"
+								class="form-control" th:field="*{age}">
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Address</label> <input type="text" class="form-control"
+								th:field="*{address}">
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Telephone</label> <input type="text" class="form-control"
+								th:field="*{telephone}">
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Username</label> <input type="text" class="form-control"
+								th:field="*{username}">
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Password</label> <input type="password"
+								class="form-control" th:field="*{password}">
+						</div>
+
+						<div class="col-md-6 form-group">
+							<label>Joining Date</label> <input type="text"
+								class="form-control" placeholder="yyyy-MM-dd"
+								id="join_datepicker" th:field="*{joiningDate}">
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Email</label> <input type="email" class="form-control"
+								th:field="*{email}">
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Roles: </label>
+							<ul th:each="role : ${roles}">
+								<li><input type="checkbox" name="roles"
+									th:text="${role.description}" th:value="${role.roleId}" /></li>
+							</ul>
+						</div>
+						<input type="hidden" id="id" th:field="*{userId}">
+					</div>
+					<button type="submit" class="btn btn-primary btn-block mt-3">Save</button>
+				</form>
+				<form th:action="@{/console}">
+					<input type="submit" value="Return to console"
+						class="btn btn-primary btn-block mt-3" />
+				</form>
+			</div>
+		</div>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+		$(function() {
+			// default date
+			$('#join_datepicker').val(new Date().toISOString().slice(0, 10));
+			$("#join_datepicker").datepicker({
+				dateFormat : "yy-mm-dd"
+			});
+		});
+	</script>
+</body>
+</html>

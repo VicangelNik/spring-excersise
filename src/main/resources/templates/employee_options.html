@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<link rel="stylesheet" href="style.css">
+<title>Employee Options</title>
+</head>
+<body>
+	<p>
+		<a th:href="@{/employee/show_my_details}">Show my details..</a>
+	</p>
+	<p>
+		<a th:href="@{/employee/view_permits}">View permits..</a>
+	</p>
+	<p>
+		<a th:href="@{/employee/view_confirmed_permits}">View confirmed
+			permits..</a>
+	</p>
+	<p>
+		<a th:href="@{/employee/view_requested_permits}">View requested
+			Permits..</a>
+	</p>
+	<p>
+		<a th:href="@{/employee/register_permit}">Request permit..</a>
+	</p>
+	<p>
+		<a th:href="@{/home}">Go to home page..</a>
+	</p>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out" />
+	</form>
+</body>
+</html>

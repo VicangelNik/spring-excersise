@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Permits</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<table>
+	<thead>
+		<tr>
+			<th>Description</th>
+			<th>Date From</th>
+			<th>Date To</th>
+			<th>Application Request Date</th>
+			<th>Confirmation Date</th>
+			<th>Status</th>
+			<th>Category</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:if="${permit.empty}">
+			<td colspan="2">No Permits</td>
+		</tr>
+		<tr th:each="permit : ${permit}">
+			<td><span th:text="${permit.description}"> Description </span></td>
+			<td><span th:text="${permit.fromDate}"> Date From </span></td>
+			<td><span th:text="${permit.todate}"> Date To </span></td>
+			<td><span th:text="${permit.applicationReqestDate}">
+					Application Request Date </span></td>
+			<td><span th:text="${permit.confirmationDate}">
+					Confirmation Date </span></td>
+			<td><span th:text="${permit.status}"> Status </span></td>
+			<td><span th:text="${permit.permitCategory}"> Category </span></td>
+			<td th:if="${viewRequestedPermits!=null}"><a
+				th:href="@{/employee/confirm_permit/{id}(id=${permit.permitId})}"
+				class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	<a th:href="@{/employee}">Return to employee options</a>
+</p>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Create New Employee</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+
+<body>
+	<div class="container my-3">
+		<div class="row">
+			<div class="col-md-8 mx-auto">
+				<h2>Permit Request</h2>
+				<form th:action="@{/employee/save_permit}" th:object="${permit}"
+					method="post">
+					<div class="form-row">
+						<div class="col-md-6 form-group">
+							<label>Description</label> <input type="text"
+								class="form-control" th:field="*{description}">
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Status</label> <select class="form-control"
+								th:field="*{status}">
+								<option value="">Choose...</option>
+								<option value="PENDING">PENDING</option>
+							</select>
+						</div>
+						<div class="col-md-6 form-group">
+							<label>From Date</label> <input type="text" class="form-control"
+								placeholder="yyyy-MM-dd"
+								value="<?= date('yyyy-MM-dd', time()); ?>" id="datepicker"
+								th:field="*{fromDate}">
+						</div>
+						<div class="col-md-6 form-group">
+							<label>To Date</label> <input type="text" class="form-control"
+								placeholder="yyyy-MM-dd" id="datepicker1" th:field="*{todate}">
+						</div>
+
+						<div class="col-md-6 form-group">
+							<label>Category</label> <select class="form-control"
+								th:field="*{permitCategory}">
+								<option value="">Choose...</option>
+								<option value="DAILY">DAILY</option>
+								<option value="URGENT">URGENT</option>
+								<option value="WEEKLY">WEEKLY</option>
+							</select>
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Application Request Date</label> <input type="text"
+								class="form-control" placeholder="yyyy-MM-dd" id="datepicker2"
+								th:field="*{applicationReqestDate}">
+						</div>
+						<input type="hidden" id="id" th:field="*{permitId}">
+					</div>
+					<button type="submit" class="btn btn-primary btn-block mt-3">Save</button>
+				</form>
+				<form th:action="@{/employee}">
+					<input type="submit" value="Return to employee options"
+						class="btn btn-primary btn-block mt-3" />
+				</form>
+			</div>
+		</div>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+		// default date
+		$('#datepicker').val(new Date().toISOString().slice(0, 10));
+		$(function() {
+			$("#datepicker").datepicker({
+				dateFormat : "yy-mm-dd",
+			});
+			$("#datepicker1").datepicker({
+				dateFormat : "yy-mm-dd"
+			});
+			$("#datepicker2").datepicker({
+				dateFormat : "yy-mm-dd"
+			});
+		});
+	</script>
+</body>
+</html>

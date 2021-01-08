@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Result</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+	<h2>Result</h2>
+	<table>
+		<tbody>
+			<tr>
+				<td><strong>ID:</strong></td>
+				<td><span th:text="${permit.permitId}"></span></td>
+			</tr>
+			<tr>
+				<td><strong>Description:</strong></td>
+				<td><span th:text="${permit.description}"></span></td>
+			</tr>
+			<tr>
+				<td><strong>From Date:</strong></td>
+				<td><span th:text="${permit.fromDate}"></span></td>
+			</tr>
+			<tr>
+				<td><strong>To Date:</strong></td>
+				<td><span th:text="${permit.todate}"></span></td>
+			</tr>
+			<tr>
+				<td><strong>Application Request Date:</strong></td>
+				<td><span th:text="${permit.applicationReqestDate}"></span></td>
+			</tr>
+			<tr>
+				<td><strong>Confirmation Date:</strong></td>
+				<td><span th:text="${permit.confirmationDate}"></span></td>
+			</tr>
+			<tr>
+				<td><strong>Status:</strong></td>
+				<td><span th:text="${permit.status}"></span></td>
+			</tr>
+			<tr>
+				<td><strong>Category:</strong></td>
+				<td><span th:text="${permit.permitCategory}"></span></td>
+			</tr>
+			<tr>
+				<td colspan="2">&nbsp;<a th:href="@{/employee}"
+					class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Return
+						to employee options
+				</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
