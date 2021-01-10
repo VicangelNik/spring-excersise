@@ -9,19 +9,19 @@
 <body>
 	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 	<p>
-		<a th:href="@{/console/register_user}">Create User...</a>
+		<a th:href="@{/console/register_user}">Create User</a>
 	</p>
 	<p>
-		<a th:href="@{/console/show_all}">Show all users...</a>
+		<a th:href="@{/console/show_all}">Show all users</a>
 	</p>
 	<p>
-		<a th:href="@{/console/show_roles}">Show roles...</a>
+		<a th:href="@{/console/show_roles}">Show roles</a>
 	</p>
 	<p>
-		<a th:href="@{/console/register_role}">Αdd Role...</a>
+		<a th:href="@{/console/register_role}">Αdd role</a>
 	</p>
 	<p>
-		<a th:href="@{/home}">Go to home page..</a>
+		<a th:href="@{/home}">Return home page</a>
 	</p>
 	<form th:action="@{/logout}" method="post">
 		<input type="submit" value="Sign Out" />

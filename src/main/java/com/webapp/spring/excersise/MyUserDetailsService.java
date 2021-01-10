@@ -19,7 +19,6 @@ public class MyUserDetailsService implements UserDetailsService {
 		if (user == null) {
 			throw new RuntimeErrorException(null, "User is not found");
 		}
-		System.out.println(user.getPassword());
 		return new MyUserDetails(user);
 	}
 }

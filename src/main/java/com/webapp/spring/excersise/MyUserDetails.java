@@ -27,13 +27,11 @@ public class MyUserDetails implements UserDetails {
 		this.userName = user.getUsername();
 		this.password = user.getPassword();
 		Set<Role> roles = user.getRoles();
-		roles.forEach(role -> System.out.println(role.getDescription()));
 		Set<String> authDescriptionList = new HashSet<>();
 		roles.forEach(role -> {
 			role.getAuthorities().forEach(auth -> authDescriptionList.add(auth.getAuthority()));
 		});
 		this.authorities = authDescriptionList.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
-		this.authorities.forEach(auth -> System.out.println(auth.getAuthority()));
 	}
 
 	@Override
@@ -43,7 +41,6 @@ public class MyUserDetails implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		System.out.println(password);
 		return this.password;
 	}
 
