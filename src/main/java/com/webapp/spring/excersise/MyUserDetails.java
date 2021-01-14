@@ -15,6 +15,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
+/**
+ * This class returns the user's details and saves the user's username, password
+ * and authorities
+ *
+ */
 public class MyUserDetails implements UserDetails {
 
 	private static final long serialVersionUID = -7241024976151974214L;
